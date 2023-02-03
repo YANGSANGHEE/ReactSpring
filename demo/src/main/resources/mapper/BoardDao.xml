@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.DAO.BoardDao">
+    <select id="getBoardList" resultType="com.example.demo.DTO.BoardDto">
+    	<!-- resultType : select 된 데이터를 반환할 그릇을 정해주는 것 BoardDto에 담김 -->
+        SELECT * FROM board;
+    </select>
+      <insert id="Boardinsert" parameterType="map"  keyProperty="id">
+        INSERT INTO board(writer,title,con,date) VALUES(#{Writer},#{Title},#{Content},#{Date});
+    </insert>
+    <select id='BoardGet' parameterType="map" resultType="com.example.demo.DTO.BoardDto">
+    	SELECT * FROM board WHERE id = #{id};
+    </select>
+    <delete id ="BoardDelete" parameterType="map">
+    	DELETE FROM board WHERE id = #{id};
+    </delete>
+    <update id ="BoardUpdate" parameterType="map">
+    <!-- map타입의 데잍 값이 들ㅇ올걸 인지 시켜줌 -->
+    	UPDATE board SET writer = #{Writer}, title = #{Title}, con = #{Content}, date = #{Date} WHERE id = #{id};
+    </update>
+</mapper>

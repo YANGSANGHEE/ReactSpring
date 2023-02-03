@@ -1,0 +1,18 @@
+package com.example.demo.DTO;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class BoardDto {
+	private int id;
+	private String writer;
+	private String title;
+	private String con;
+	private String date;
+}
+
+//DTO
+//데이터 전송 객체,데이터 전송을 위해 생성되는 객체
+//*DTO 기법을 사용하면 중요한 정보를 노출시키지 않고 두 시스템(API와 서버 등) 간 통신을 원활하게 촉진할 수 있습니다.

@@ -1,0 +1,60 @@
+package com.example.demo.Controller;
+//패키지 경로
+
+import java.util.List;
+//인터페이스 클래스 => java.util.Collection 인터페이스 구현
+//인터페이스 클래스들이 필수로 구현해야하는 추상 자료형 => 객체의 사용방법을 가이드라인 하는것
+import java.util.Map;
+//객체 프로퍼티의 KEY와 KEYVALUE를 매핑하는객체
+//동일한 키를 두개이상 등록 할 수없다 = 키 중복 하면 안됨!
+
+import org.springframework.web.bind.annotation.RequestBody;
+//클라이언트에서 오는 데이터를 받고 보내는 Body (req온 데이터를 담는 바디)
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+//클라이언트에서 오는 요청을 처리하기 위한 api url을 매핑할때 쓰는 오너테이션
+//@GetMapping , @PostMapping으로 어노테이션 가능
+//cf ) @RequestParam : 	Controller 메소드의 파라미터와 웹요청 파라미터와 맵핑하기 위한 어노테이션(받는 데이터의 타입을 지정해주고 데이터 일치 여부를 boolean으로 값을 반환)
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.DTO.BoardDto;
+import com.example.demo.Service.BoardService;
+
+import lombok.RequiredArgsConstructor;
+//어노테이션 : 주석이지만 주석과 차이가 있음 => 비즈니스 로직에는 영향을 주지 않지만
+//연결 방법이나 소스 코드의 구조를 변경할 수 있음.
+//관심 지향 프로그래밍(핵심관심사항과 전체에 적용되는 공통관심사항을 기준으로 프로그래밍함으로써
+//공통모듈을 여러 코드에 쉽게 적용할 수 있 도록 지원하는 기술)을 쉽게 관리
+
+@RestController
+@RequiredArgsConstructor
+public class BoardController {
+	//Class : 객체를 정의하는 틀 또는 설계도 (js class랑 비슷한 느낌인듯 인스턴스 생성기?)
+	//instance : 클래스로부터 객체를 선언하는 과정 => 하나의 클래스로 부터 여러개의 인스턴스를 생성할 수 있음.
+	//인스턴스는 독립된 메모리 공간이 생김! 
+	private final BoardService boardService;
+	
+	@RequestMapping(value = "/api/board", method = RequestMethod.GET)
+	public List<BoardDto> getBoard(){
+		return boardService.getBoardList();
+	}
+	
+	@RequestMapping(value="/api/posting", method = RequestMethod.POST)
+	public String Boardinsert(@RequestBody Map<String, String> params){
+		return boardService.Boardinsert(params);
+	}
+	
+	@RequestMapping(value="/api/getboard", method = RequestMethod.POST)
+	public BoardDto BoardGet(@RequestBody Map<String,String> params) {
+		return boardService.BoardGet(params);
+	}
+	@RequestMapping(value="/api/delboard", method = RequestMethod.POST)
+	public String BoardDelete(@RequestBody Map<String,String> params) {
+		return boardService.BoardDelete(params);
+	}
+	@RequestMapping(value="/api/upboard", method = RequestMethod.POST)
+	public String BoardUpdate(@RequestBody Map<String,String> params) {
+		return boardService.BoardUpdate(params);
+	}
+}

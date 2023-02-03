@@ -1,0 +1,13 @@
+package com.example.demo.Service;
+
+import com.example.demo.dto.BoardDto;
+import java.util.List;
+import java.util.Map;
+
+public interface BoardService {
+	public List<BoardDto> getBoardList();
+	public String Boardinsert(Map<String, String> params);
+	public BoardDto BoardGet(Map<String,String> params);
+	public String BoardDelete(Map<String,String> params);
+	public String BoardUpdate(Map<String,String> params);
+}
