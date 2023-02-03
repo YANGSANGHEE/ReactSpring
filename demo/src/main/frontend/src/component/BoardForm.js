@@ -6,18 +6,29 @@ import { Button } from './Common/Button';
 import BoardLine from './BoardLine';
 
 const BoardSet = styled.div`
-  width: 900px;
+  width: 80%;
   & > div {
     width: 100%;
+    margin-bottom: 3rem;
     & > div {
+      &.titles {
+        height: 5rem;
+        & > div {
+          padding-top: 0.8rem;
+          background: #2d49ee;
+          color: #fff;
+          font-size: 2.5rem;
+        }
+      }
       width: 100%;
-      height: 30px;
+      height: 4rem;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       & > div {
+        padding-top: 0.4rem;
         font-size: 2rem;
         text-align: center;
-        border: 1px solid black;
+        border-bottom: 1px solid #b2b2b2;
       }
     }
   }
@@ -43,7 +54,7 @@ const BoardForm = () => {
       <h1 style={{ fontSize: '3rem' }}>Spring CRUD</h1>
       <BoardSet>
         <div>
-          <div>
+          <div className='titles'>
             {formTitle.map((value, index) => {
               return <div key={index}>{value}</div>;
             })}
@@ -61,14 +72,16 @@ const BoardForm = () => {
               );
             })}
         </div>
-        <Button
-          style={{ marginTop: '2rem' }}
-          onClick={() => {
-            Navigation('/write');
-          }}
-        >
-          글쓰기
-        </Button>
+        <div>
+          <Button
+            style={{ marginTop: '2rem' }}
+            onClick={() => {
+              Navigation('/write');
+            }}
+          >
+            글쓰기
+          </Button>
+        </div>
       </BoardSet>
     </>
   );

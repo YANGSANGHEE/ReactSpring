@@ -59,3 +59,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 }
+
+//상태코드 양식
+//{
+//	code : "F-1"
+//	msg : "데이터 불러옴",
+//	data : [
+//		 
+//	 ]
+//}

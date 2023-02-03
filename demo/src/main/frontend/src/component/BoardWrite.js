@@ -5,11 +5,14 @@ import { Button } from './Common/Button';
 import axios from 'axios';
 
 const FormSet = styled.form`
-  width: 900px;
+  width: 80%;
   & > div {
-    width: inherit;
+    margin-bottom: 3rem;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     & > input[type='text'] {
       width: 80%;
       height: 5rem;
@@ -47,6 +50,7 @@ const BoardWrite = () => {
       })
       .catch((e) => console.log(e));
     Navigation('/');
+    window.location.reload();
   }, []);
 
   // console.log(dateSet.toLocaleDateString);
@@ -63,9 +67,9 @@ const BoardWrite = () => {
           <input type='text' placeholder='제목' ref={Title}></input>
           <textarea placeholder='내용' ref={Contents}></textarea>
         </div>
-        <Button style={{ marginTop: '2rem' }} onClick={BoardPosting}>
-          완료
-        </Button>
+        <div>
+          <Button onClick={BoardPosting}>완료</Button>
+        </div>
       </FormSet>
     </>
   );

@@ -16,7 +16,7 @@
     	DELETE FROM board WHERE id = #{id};
     </delete>
     <update id ="BoardUpdate" parameterType="map">
-    <!-- map타입의 데잍 값이 들ㅇ올걸 인지 시켜줌 -->
+    <!-- map타입의 데잍 값이 들어올걸 인지 시켜줌 -->
     	UPDATE board SET writer = #{Writer}, title = #{Title}, con = #{Content}, date = #{Date} WHERE id = #{id};
     </update>
 </mapper>

@@ -5,10 +5,12 @@ import { Button } from './Common/Button';
 import axios from 'axios';
 
 const FormSet = styled.form`
-  width: 900px;
+  width: 80%;
   & > div {
-    width: inherit;
+    margin-bottom: 3rem;
+    width: 100%;
     display: flex;
+    align-items: center;
     flex-direction: column;
     & > input[type='text'] {
       width: 80%;
@@ -25,6 +27,9 @@ const FormSet = styled.form`
       resize: none;
     }
   }
+  & > div:nth-child(2) {
+    width: 100%;
+  }
 `;
 
 const BoardReWrite = () => {
@@ -32,8 +37,8 @@ const BoardReWrite = () => {
   const dateSet = new Date();
   const today = dateSet.toLocaleDateString();
   const { boardid } = useParams('');
-  const Navigation = useNavigate();
 
+  const Navigation = useNavigate();
   useEffect(() => {
     axios.post('/api/getboard', { id: boardid }).then((res) => {
       console.log(res);
@@ -58,6 +63,7 @@ const BoardReWrite = () => {
       })
       .catch((e) => console.log(e));
     Navigation('/');
+    window.location.reload();
   }, []);
 
   console.log(dateSet.toLocaleDateString);
@@ -87,9 +93,9 @@ const BoardReWrite = () => {
             defaultValue={data && data.con}
           ></textarea>
         </div>
-        <Button style={{ marginTop: '2rem' }} onClick={BoardPosting}>
-          수정하기
-        </Button>
+        <div>
+          <Button onClick={BoardPosting}>수정하기</Button>
+        </div>
       </FormSet>
     </>
   );

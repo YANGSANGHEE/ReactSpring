@@ -16,8 +16,7 @@ public interface BoardDao {
 	//POST로 받은 데이터를 DB에서 WHERE문으로 조회 후 해당 id에 해당하는 정보를 가져오기위함
 	int BoardDelete(Map<String,String> params);
 	int BoardUpdate(Map<String,String> params);
-	//insert,delete,update는 row의 변동사항이 있을 수 있기때문에
-	//타입을 int로 지정 (row가 1줄이 될 수 있고 두줄이 될 수 있음)
+	//굳이 int를 안써도됨 리턴값이 없는 void로 써도될듯
 }
 
 //DAO

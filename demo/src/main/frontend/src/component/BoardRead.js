@@ -6,14 +6,25 @@ import { Button } from './Common/Button';
 import axios from 'axios';
 
 const ReadSet = styled.div`
-  width: 900px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   & > h1 {
     font-size: 3rem;
+    text-align: center;
   }
-  & > div {
+  & > div:nth-child(2) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     & > div {
-      margin-bottom: 2rem;
-      border-bottom: 1px solid black;
+      width: 80%;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid #b2b2b2;
       & > span {
         font-size: 2rem;
         margin-right: 2rem;
@@ -23,11 +34,13 @@ const ReadSet = styled.div`
       }
       & > p {
         font-size: 2rem;
+        padding-top: 2rem;
+        height: 500px;
       }
     }
   }
   & > div:nth-child(3) {
-    width: 250px;
+    width: 50rem;
     display: flex;
     justify-content: space-between;
   }
@@ -51,6 +64,7 @@ const BoardRead = () => {
       console.log(e);
     });
     Navigation('/');
+    window.location.reload();
   });
   const ChangeCon = () => {
     Navigation(`/Rewrite/${data.id}`);
@@ -77,7 +91,7 @@ const BoardRead = () => {
           <p>{data && data.con}</p>
         </div>
       </div>
-      <div className='btnWrap'>
+      <div>
         <Button onClick={ChangeCon}>수정하기</Button>
         <Button onClick={DeleteCon}>삭제하기</Button>
       </div>

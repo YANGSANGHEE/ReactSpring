@@ -20,9 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 //RESTFUL 한 웹 서비스를 구축하게위해 사용하는 컨트롤러
 //Controller : 화면과 로직을 연결시켜주는 라우팅 역할을 함 / 사용자가 화면단에서 어떤 이벤트를 했을경우 화면이나 비즈니스 로직이 실행할 수 있도록 업데이트 역할을 함
 import com.example.demo.DTO.BoardDto;
-
 import com.example.demo.Service.BoardService;
-
 import lombok.RequiredArgsConstructor;
 //어노테이션 : 주석이지만 주석과 차이가 있음 => 비즈니스 로직에는 영향을 주지 않지만
 //연결 방법이나 소스 코드의 구조를 변경할 수 있음.
@@ -39,7 +37,7 @@ public class BoardController {
 	//final : 오직 한번만 할당 할 수 있는 엔티티 정의할 때 사용
 	//cf : Static : 변수나 함수에 붙는 키워드 , 메모리에 딱 하번만 할당되어 메모리를 효율적으로사용(주소값 공유)
 	//-멤버
-	//private : Class 외부에서 접근할 수 없는 변수 (클래스 블록 안에서만) / 값을 대입하기 위해서는 publics으로 제공되는 Set 함수를 사용해야함
+	//private : Class 외부에서 접근할 수 없는 변수 (클래스 블록 안에서만) / 값을 대입하기 위해서는 public으로 제공되는 Set 함수를 사용해야함
 	//public : Class 외부에서 접근할 수 있는 변수
 	
 	@RequestMapping(value = "/api/board", method = RequestMethod.GET)
